@@ -35,7 +35,32 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button>Cancel</button>
-        <button>Save settings</button>
+        <button data-pdsa-action="cancel">Cancel</button>
+        <button data-pdsa-action="save">Save settings</button>
     </div>
 </div>
+
+@section scripts
+
+{
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("[data-pdsa-action]").on("click", function (e) {
+
+                e.preventDefault();
+                console.log($(this).data("pdsa-action") + " was clicked")
+
+                $("#EventCommand").val($(this).data("pdsa-action"));
+
+                $("form").submit();
+
+            });
+
+        });
+
+    </script>
+
+}
