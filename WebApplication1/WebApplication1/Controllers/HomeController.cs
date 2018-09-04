@@ -42,8 +42,13 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(MockData md)
+        public ActionResult Index(MockData model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            Subscription sub = new Subscription()
             return View(md);
         }
     }
