@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<MockData>
+}
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -6,6 +8,10 @@
     <div class="col-md-4">
         <h1>Subscribe to alerts:</h1>
         <div>
+            @foreach (var item in Model)
+            {
+
+            }
             <input type="checkbox" aria-label="Checkbox for following text input" />
             <h2>DO more than</h2>
             <div class="dropdown">
