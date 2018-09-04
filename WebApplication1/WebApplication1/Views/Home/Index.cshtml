@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<MockData>
+}
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -6,6 +8,10 @@
     <div class="col-md-4">
         <h1>Subscribe to alerts:</h1>
         <div>
+            @foreach (var item in Model)
+            {
+
+            }
             <input type="checkbox" aria-label="Checkbox for following text input" />
             <h2>DO more than</h2>
             <div class="dropdown">
@@ -35,7 +41,32 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button>Cancel</button>
-        <button>Save settings</button>
+        <button data-pdsa-action="cancel">Cancel</button>
+        <button data-pdsa-action="save">Save settings</button>
     </div>
 </div>
+
+@section scripts
+
+{
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("[data-pdsa-action]").on("click", function (e) {
+
+                e.preventDefault();
+                console.log($(this).data("pdsa-action") + " was clicked")
+
+                $("#EventCommand").val($(this).data("pdsa-action"));
+
+                $("form").submit();
+
+            });
+
+        });
+
+    </script>
+
+}

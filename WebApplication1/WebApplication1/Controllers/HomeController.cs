@@ -10,21 +10,41 @@ namespace WebApplication1.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            List<MockData> dataObjects = new List<MockData>();
+
+
+
+            dataObjects.Add(new MockData()
+
+            {
+
+                Object = "DO",
+
+                Condition = "<",
+
+                Value = 30
+
+            });
+
+            dataObjects.Add(new MockData()
+
+            {
+
+                Object = "DO",
+
+                Condition = ">",
+
+                Value = 30
+
+            });
+
+            return View(dataObjects);
         }
 
-        public ActionResult About()
+        [HttpPost]
+        public ActionResult Index(MockData md)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return View(md);
         }
     }
 }
